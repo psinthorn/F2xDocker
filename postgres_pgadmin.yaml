@@ -1,0 +1,31 @@
+version: '3.9'
+services:
+  # Postgres with PgAdmin
+  db_postgres:
+    image: postgres:latest
+    restart: always
+    environment: 
+      POSTGRES_DATABSE: f2xhotel
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGTRES_ROOT_PASSWORD:  
+    volumes:
+      - .db_data:/var/lib/postgres
+    ports:
+      - 5432:5432
+  
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=psinthorn@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=adminx
+    ports:
+      - 5050:80
+    restart: always
+    volumes:
+      - pgadmin:/root/.pgadmin
+volumes:
+  .db_data:
+  pgadmin:
+      
+    
