@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  # MongoDB container service 
+  # contianer name
+  mangodb:
+    # image
+    # port
+    # environment is use for configuration file
+    image: mongodb
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+  
+  # Mongo-Express container service 
+  # container name 
+  mongo-express:
+    image: mongo-exores
+    ports:  
+      - 27012:27012
+    environment: 
+      - ME_CONFIG_MONGODBUSERNAME=admin #refer to mongodb root username 
+      - ME_CONFIG_MONGODBPASSWORD=admin #refer to mongodb root password 
+      - ME_CONFIG_SERVER=mogodb #refer mongodb container name 
+    depends_on:
+      - mongodb #if mongodb service not start then not need to start mongo-express service
+  # image 
+  # ports 
+  # environment
+

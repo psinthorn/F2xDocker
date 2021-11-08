@@ -1,6 +1,6 @@
 version: '3.9'
 
-# Reuest: 
+# Request: 
 # need to add frontend container to complete example for full stack environment development
 #
 
@@ -22,7 +22,8 @@ services:
       - db_mysql
       - redis
 
-  # service database section
+  # Section service database section
+  # mysql container service
   db_mysql:
     image: mysql:5.7.22
     container_name: db_mysql
@@ -37,6 +38,8 @@ services:
     ports:
       - 33066:3306
 
+  # phpmyadmin container service
+  # this service is work depends on mysql container service (db_mysql)
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: pma
@@ -49,8 +52,10 @@ services:
     restart: always
     ports:
       - 8081:80
-    
-  
+    depends_on:
+      - db_mysql
+
+  # redis container service
   redis:
     image: redis:latest
     ports:

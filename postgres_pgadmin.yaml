@@ -1,6 +1,14 @@
 version: '3.9'
 services:
-  # Postgres with PgAdmin
+  
+  # Section: Backend container service
+  # backend service will work depends on database container service
+
+  # Section: Frontend container service
+  # frontend will work depends on backend container service
+
+  # Section: Database Service
+  # postgres with PgAdmin
   db_postgres:
     image: postgres:latest
     restart: always
@@ -14,6 +22,7 @@ services:
     ports:
       - 5432:5432
   
+  # pgadmin container service work depends on postgres container service (db_postgres)
   pgadmin:
     image: dpage/pgadmin4
     environment:
@@ -24,6 +33,10 @@ services:
     restart: always
     volumes:
       - pgadmin:/root/.pgadmin
+    depends_on:
+      - db_postgres
+
+# Section: Volumn Data
 volumes:
   .db_data:
   pgadmin:
