@@ -2,30 +2,39 @@ version: '3.8'
 services:
   # MongoDB container service 
   # contianer name
-  mangodb:
+  mongodb:
     # image
     # port
     # environment is use for configuration file
-    image: mongodb
+    image: mongo
     ports:
       - 27017:27017
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=admin
+    volumes: 
+      # when data will persistant to host 
+      # data_on_host/data_on_continer
+      - mongo_data:/data/db
   
   # Mongo-Express container service 
   # container name 
   mongo-express:
-    image: mongo-exores
+    image: mongo-express
     ports:  
-      - 27012:27012
+      - 27018:8081
     environment: 
-      - ME_CONFIG_MONGODBUSERNAME=admin #refer to mongodb root username 
-      - ME_CONFIG_MONGODBPASSWORD=admin #refer to mongodb root password 
-      - ME_CONFIG_SERVER=mogodb #refer mongodb container name 
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=admin #refer to mongodb root username 
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=admin #refer to mongodb root password 
+      - ME_CONFIG_MONGODB_SERVER=mongodb #refer mongodb container name 
     depends_on:
-      - mongodb #if mongodb service not start then not need to start mongo-express service
+      - mongodb 
+    #if mongodb service not start then not need to start mongo-express service
   # image 
   # ports 
   # environment
+
+volumes:
+  mongo_data:
+    driver: local
 

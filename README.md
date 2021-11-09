@@ -8,5 +8,8 @@ Docker and docker-compose file libraries
 
 ### Docker-Composer file 
 
+### คำสั่งสำหรับการ run docker compose file แบบระบุชื่อไฟล์แบบเฉพาะเจาะจง
+`docker-compose -f mongodb_mongo-express.yaml up`
+
 
 

@@ -1,0 +1,30 @@
+version: '3'
+# services:
+  # container name 
+    # image:
+    # environment: 
+      # - env 
+    # ports: 
+      # - 8080:80
+    # volumes: 
+    # depends_on:
+      # - datatabase 
+services:
+  iacc:
+    image: 
+    environment:
+    ports:
+      - 8080:80
+  db_mysql:
+    image: mysql
+  phpmyadmin:
+    image:
+    environment:
+    ports:
+     - 33061:3306
+    volumes:
+      - mysql_data:/var/lib/mysql
+volumes:
+  mysql_data:
+    driver: local
+ 

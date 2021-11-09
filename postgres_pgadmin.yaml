@@ -18,7 +18,7 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGTRES_ROOT_PASSWORD:  
     volumes:
-      - .db_data:/var/lib/postgres
+      - .db_data:/var/lib/postgres/data
     ports:
       - 5432:5432
   
