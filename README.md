@@ -11,5 +11,14 @@ Docker and docker-compose file libraries
 ### คำสั่งสำหรับการ run docker compose file แบบระบุชื่อไฟล์แบบเฉพาะเจาะจง
 `docker-compose -f mongodb_mongo-express.yaml up`
 
+how to add user to linux server
+`adduser adminx`
+
+How to add user to sudo group
+`usermod -aG sudo adminx
+
+how to clone private git repository
+`git clone https://psinhtorn:gitPersonalToken@github.com/gituser/repository.git`
+
 
 
