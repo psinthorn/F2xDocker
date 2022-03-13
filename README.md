@@ -17,6 +17,10 @@ Docker and docker-compose file libraries
 ### How to add user to sudo group
 `usermod -aG sudo adminx`
 
+### how to update and upgrade server
+`sudo apt update`
+`sudo apt upgrade`
+
 ### how to clone private git repository
 `git clone https://psinhtorn:gitPersonalToken@github.com/gituser/repository.git`
 
