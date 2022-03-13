@@ -20,6 +20,8 @@ Docker and docker-compose file libraries
 ### how to update and upgrade server
 `sudo apt update`
 `sudo apt upgrade`
+### then reboot server 
+`sudo reboot`
 
 ### how to clone private git repository
 `git clone https://psinhtorn:gitPersonalToken@github.com/gituser/repository.git`
