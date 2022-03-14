@@ -11,7 +11,7 @@ Docker and docker-compose file libraries
 ### คำสั่งสำหรับการ run docker compose file แบบระบุชื่อไฟล์แบบเฉพาะเจาะจง
 `docker-compose -f mongodb_mongo-express.yaml up`
 
-## Server command
+## Server command (Linux)
 ### how to add user to linux server
 `adduser adminx`
 ### How to add user to super user group (sudo)
@@ -24,6 +24,12 @@ Docker and docker-compose file libraries
 
 ### how to switch to another user
 `su - username`
+
+### how to delete user and user home directory 
+#### delete user 
+`sudo userdel username`
+#### remove directory, sub-directory and all files that stored in all directory (-rf recurcive force) 
+`sudo rmdir -rf directory name`
 
 ### how to clone private git repository
 `git clone https://psinhtorn:gitPersonalToken@github.com/gituser/repository.git`
