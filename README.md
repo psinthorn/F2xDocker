@@ -11,17 +11,19 @@ Docker and docker-compose file libraries
 ### คำสั่งสำหรับการ run docker compose file แบบระบุชื่อไฟล์แบบเฉพาะเจาะจง
 `docker-compose -f mongodb_mongo-express.yaml up`
 
+## Server command
 ### how to add user to linux server
 `adduser adminx`
-
-### How to add user to sudo group
+### How to add user to super user group (sudo)
 `usermod -aG sudo adminx`
-
 ### how to update and upgrade server
 `sudo apt update`
 `sudo apt upgrade`
-### then reboot server 
+### then reboot server refresh update 
 `sudo reboot`
+
+### how to switch to another user
+`su - username`
 
 ### how to clone private git repository
 `git clone https://psinhtorn:gitPersonalToken@github.com/gituser/repository.git`
