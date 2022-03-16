@@ -11,7 +11,7 @@ Docker and docker-compose file libraries
 ### คำสั่งสำหรับการ run docker compose file แบบระบุชื่อไฟล์แบบเฉพาะเจาะจง
 `docker-compose -f mongodb_mongo-express.yaml up`
 
-## Server command (Linux)
+## Server and Security command (Linux)
 ### how to add user to linux server
 `adduser adminx`
 ### How to add user to super user group (sudo)
