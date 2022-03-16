@@ -35,7 +35,7 @@ Docker and docker-compose file libraries
 `ssh-keygen -t rsa`
 ### copy key to server
 `ssh-copy-id adminx@178.128.57.4`
-### test ssh to server
+### connect to server with ssh
 `ssh adminx@178.128.57.4`
 
 ### how to clone private git repository
