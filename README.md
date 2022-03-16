@@ -31,12 +31,15 @@ Docker and docker-compose file libraries
 #### remove directory, sub-directory and all files that stored in all directory (-rf recurcive force) 
 `sudo rmdir -rf directory name`
 
-### Generate public and private keys for mac and linux
+### Generate public and private keys for mac and linux (this command is working at local computer not on server)
 `ssh-keygen -t rsa`
-### copy key to server
+### copy key to server (this command is working at local computer not on server)
 `ssh-copy-id adminx@178.128.57.4`
-### connect to server with ssh
+### connect to server with ssh (this command is working at local computer not on server)
 `ssh adminx@178.128.57.4`
+### modify and backup sshd_config 
+`sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.dist`
+`sudo vi /etc/ssh/sshd_config`
 
 ### how to clone private git repository
 `git clone https://psinhtorn:gitPersonalToken@github.com/gituser/repository.git`
