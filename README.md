@@ -60,7 +60,9 @@ with general server setting include general security, ssh, UFW and server infoma
 
 
 ## How to clone private git repository
+### clone command
 `git clone https://psinhtorn:gitPersonalToken@github.com/gituser/repository.git`
+### how to get github personal token keys
 
 
 
