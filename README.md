@@ -41,7 +41,7 @@ Docker and docker-compose file libraries
 `sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.dist`
 `sudo vi /etc/ssh/sshd_config`
 
-## Server host name
+## Server infomation
 ### how to view current host name
 `sudo cat /etc/hostname`
 
