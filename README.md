@@ -1,5 +1,6 @@
 # F2xDocker
 Docker and docker-compose file libraries
+with general server setting include general security, ssh, UFW and server infomation
 
 ## Docker Commands
 ## Docker Network คืออะไร
