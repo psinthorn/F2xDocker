@@ -56,7 +56,7 @@ Docker and docker-compose file libraries
 ### how to change host name
 `sudo hostnamectl set-hostname new-server-name`
 
-### how to clone private git repository
+## How to clone private git repository
 `git clone https://psinhtorn:gitPersonalToken@github.com/gituser/repository.git`
 
 
