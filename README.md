@@ -44,17 +44,19 @@ Docker and docker-compose file libraries
 ## Server infomation
 ### how to view current host name
 `sudo cat /etc/hostname`
-
-### how to change server time zone
-`sudo dpkg-`
-
-## File Tranfer Protocal
-### How to connect to server via sftp for file transfer
-`sftp adminx@178.128.57.4`
 ### to view server infomation (ubuntu)
 `sudo hostnamectl`
 ### how to change host name
 `sudo hostnamectl set-hostname new-server-name`
+### how to view current date and time system will show you UTC time
+`date`
+### how to change server time zone after run command system will prompt you to select new timezone/city
+`sudo dpkg-reconfigure tzdata`
+
+## File Tranfer Protocal
+### How to connect to server via sftp for file transfer
+`sftp adminx@178.128.57.4`
+
 
 ## How to clone private git repository
 `git clone https://psinhtorn:gitPersonalToken@github.com/gituser/repository.git`
