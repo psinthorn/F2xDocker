@@ -41,6 +41,21 @@ Docker and docker-compose file libraries
 `sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.dist`
 `sudo vi /etc/ssh/sshd_config`
 
+## Server host name
+### how to view current host name
+`sudo cat /etc/hostname`
+
+### how to change server time zone
+`sudo dpkg-`
+
+## File Tranfer Protocal
+### How to connect to server via sftp for file transfer
+`sftp adminx@178.128.57.4`
+### to view server infomation (ubuntu)
+`sudo hostnamectl`
+### how to change host name
+`sudo hostnamectl set-hostname new-server-name`
+
 ### how to clone private git repository
 `git clone https://psinhtorn:gitPersonalToken@github.com/gituser/repository.git`
 
