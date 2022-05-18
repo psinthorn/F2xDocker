@@ -1,0 +1,48 @@
+# IOT Docker Compose File สำหรับระบบ iot โดยในไฟนี้จะประกอบไปด้วย 
+# - node-red 
+# - influxdb time series database
+# - grafana dashborad
+
+version: '3.3'
+services:
+  nodered: # ชื่อเรียกหรือชื่อ container นี้
+    # image: nodered/node-red:latest # build โดยตรงจาก image หรือ
+    build: . # build node-red โดยอ่านค่ากำหนด node-red image มาจาก Dockerfile 
+    environment: 
+      - TZ=Asia/Bangkok # กำหนด time zone ให้เป็นประเทศไทย Bangkok สมารถเปลี่ยนเป็น time zone อื่นๆ ได้ 
+    ports: 
+      - 8880:1880 # กำหนด port โดยที่ 8880 คือ local port และ 1880 คือ container port (หากเราเปลี่ยน node-red port เป็น 1888 ต้องกำหนด container port เป็น 1888 เป็นต้น)
+    restart: always
+    volumes:
+      - .nodered_data:/data # กำหนดโฟลเดอร์ สำหรับ จัดเก็บข้อมมูล หากไม่กำหนดเมื่อทำการ ปิดแล้วเปิดข้อมูลที่ทำไว้จะหายไป ในกรณีที่ไม่ได้ทำการสำรองข้อมูลไว้ให้
+
+  influxdb:
+    image: influxdb:latest
+    # build: ./influxdb/Dockerfile
+    ports: 
+      - 8086:8086
+    restart: always
+    volumes:
+      - .influxdb:/var/lib/influxdb
+      # - .influxdb:/data
+
+  grafana:
+    image: grafana/grafana
+    # build: ./grafana/Dockerfile
+    ports: 
+      - 3000:3000 
+    depends_on:
+      - influxdb
+    restart: always
+    volumes:
+      - .grafana:/var/lib/grafana
+  
+volumes:
+  .nodered_data:
+  .influxdb:
+  .grafana:
+    driver: local
+
+
+# ข้อมูลเพิ่มเติเกี่ยวกับการจัดเก็บข้อมูล grafana
+# source: https://www.datamachines.io/blog/understanding-docker-volume-persisting-a-grafana-configuration-file 
