@@ -1,0 +1,95 @@
+version: '3'
+
+services:
+
+  db_postgres:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    restart: always
+    deploy:
+      mode: replicated
+      replicas: 1
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: adminx
+      POSTGRES_DB: users
+    volumes:
+      - ./db-data/postgres/:/var/lib/postgresql/data/
+
+  mongo:
+    image: 'mongo:4.2.16-bionic'
+    ports:
+      - "27017:27017"
+    restart: always
+    deploy:
+      mode: replicated
+      replicas: 1
+    environment:
+      MONGO_INITDB_DATABASE: logs
+      MONGO_INITDB_ROOT_USERNAME: adminx
+      MONGO_INITDB_ROOT_PASSWORD: adminx
+    volumes:
+      - ./db-data/mongo/:/data/db
+  
+  mailhog: 
+    image: 'mailhog/mailhog:latest'
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+
+  # front-end: 
+  #   build:
+  #     context: ../front-end
+  #     dockerfile: ../front-end.dockerfile
+  #   ports:
+  #     - "8097:80"
+  #   restart: always
+  #   deploy:
+  #     mode: replicated
+  #     replicas: 1
+    
+
+  broker-service:
+    build:
+      context: ../broker-service
+      dockerfile: broker-service.dockerfile
+    restart: always
+    ports:
+      - "8098:80"
+    deploy:
+      mode: replicated
+      replicas: 1
+    # environment:
+    depends_on: 
+      - db_postgres
+
+  authentication-service:
+    build:
+      context: ../authentication-service
+      dockerfile: authentication-service.dockerfile
+    ports:
+      - "8099:80"
+    restart: always
+    deploy:
+      mode: replicated
+      replicas: 1
+    environment:
+      DSN: "host=postgres port=5432 user=postgres password=passwd dbname=users sslmode=disable timezone=UTC connect_timeout=5"
+    depends_on: 
+      - db_postgres
+
+  # pgadmin container service work depends on postgres container service (db_postgres)
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=psinthorn@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=adminx
+    ports:
+      - 5050:80
+    restart: always
+    volumes:
+      - ./db-data/pgadmin:/var/lib/pgadmin
+    depends_on:
+      - db_postgres
+
