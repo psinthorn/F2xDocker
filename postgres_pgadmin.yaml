@@ -12,25 +12,26 @@ services:
   db_postgres:
     image: postgres:latest
     restart: always
+    ports:
+      - 5432:5432
     environment: 
-      POSTGRES_DATABSE: f2xhotel
+      POSTGRES_DATABSE: test_database
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGTRES_ROOT_PASSWORD:  
     volumes:
       - .db_data:/var/lib/postgres/data
-    ports:
-      - 5432:5432
+    
   
   # pgadmin container service work depends on postgres container service (db_postgres)
   pgadmin:
     image: dpage/pgadmin4
+    restart: always
+    ports:
+      - 5050:80
     environment:
       - PGADMIN_DEFAULT_EMAIL=psinthorn@gmail.com
       - PGADMIN_DEFAULT_PASSWORD=adminx
-    ports:
-      - 5050:80
-    restart: always
     volumes:
       - pgadmin:/root/.pgadmin
     depends_on:

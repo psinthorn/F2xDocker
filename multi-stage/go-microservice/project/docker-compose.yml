@@ -11,9 +11,9 @@ services:
       mode: replicated
       replicas: 1
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: adminx
       POSTGRES_DB: users
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: adminx 
     volumes:
       - ./db-data/postgres/:/var/lib/postgresql/data/
 
@@ -48,7 +48,6 @@ services:
   #   deploy:
   #     mode: replicated
   #     replicas: 1
-    
 
   broker-service:
     build:

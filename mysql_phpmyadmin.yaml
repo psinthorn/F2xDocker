@@ -1,10 +1,14 @@
 version: '3.9'
+
+services:
   # Section service database section
   # mysql container service
   db_mysql:
     image: mysql:5.7.22
     container_name: db_mysql
     restart: always
+    ports:
+      - 33066:3306
     environment: 
       MYSQL_DATABASE: database_name
       MYSQL_USER: root
@@ -12,23 +16,22 @@ version: '3.9'
       MYSQL_ROOT_PASSWORD: root 
     volumes: 
       - dbdata:/var/lib/mysql
-    ports:
-      - 33066:3306
+    
 
   # phpmyadmin container service
   # this service is work depends on mysql container service (db_mysql)
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: pma
+    restart: always
+    ports:
+      - 8081:80
     links:
       - db_mysql
     environment:
       PMA_HOST: db_mysql
       PMA_PORT: 3306
       PMA_ARBITRARY: 1
-    restart: always
-    ports:
-      - 8081:80
     depends_on:
       - db_mysql
 volumes:
