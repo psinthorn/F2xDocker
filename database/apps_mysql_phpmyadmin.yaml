@@ -1,27 +1,30 @@
-version: '3.9'
+version: '3'
 services: 
   backend:
     # build image from this directory with default file (Dockerfile)
     # *if you user another name of Dockerfile then you need to replace file name 
     build: .
+    restart: always
     ports:
       # expose_port : container_port
       - 8000:3000
-
-    volumes: 
-      # if any changed on both of current working and /app directory will be copy to each immediately  
-      - .:/app
 
     # backend service will start if database is up and running completely 
     depends_on: 
       - db_mysql
       - redis
 
+    volumes: 
+      # if any changed on both of current working and /app directory will be copy to each immediately  
+      - .:/app
+
   # service database section
   db_mysql:
     image: mysql:5.7.22
     container_name: db_mysql
     restart: always
+    ports:
+      - 33066:3306
     environment: 
       MYSQL_DATABASE: specialist_ambassador
       MYSQL_USER: root
@@ -29,25 +32,23 @@ services:
       MYSQL_ROOT_PASSWORD: root 
     volumes: 
       - dbdata:/var/lib/mysql
-    ports:
-      - 33066:3306
-
+    
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: pma
+    restart: always
+    ports:
+      - 8081:80
     links:
       - db_mysql
     environment:
       PMA_HOST: db_mysql
       PMA_PORT: 3306
       PMA_ARBITRARY: 1
-    restart: always
-    ports:
-      - 8081:80
     
-  
   redis:
     image: redis:latest
+    restart: always
     ports:
       - 6378:6379
 volumes:

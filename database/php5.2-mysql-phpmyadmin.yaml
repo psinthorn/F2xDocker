@@ -15,15 +15,18 @@ services:
     environment:
     ports:
       - 8080:80
+
   db_mysql:
     image: mysql
+
   phpmyadmin:
     image:
-    environment:
     ports:
      - 33061:3306
+    environment:
     volumes:
       - mysql_data:/var/lib/mysql
+      
 volumes:
   mysql_data:
     driver: local
