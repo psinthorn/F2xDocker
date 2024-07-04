@@ -9,8 +9,11 @@ with general server setting include general security, ssh, UFW and server infoma
 
 ### Docker-Composer file 
 
-### คำสั่งสำหรับการ run docker compose file แบบระบุชื่อไฟล์แบบเฉพาะเจาะจง
-`docker-compose -f mongodb_mongo-express.yaml up`
+### คำสั่งสำหรับการ run docker compose file แบบระบุชื่อไฟล์แบบเฉพาะเจาะจงและให้ทำงานที่ background 
+`docker-compose -f mongodb_mongo-express.yaml up -d`
+
+### คำสั่งสำหรับหยุดการทำงานของ Docker container
+`docker-compose down`
 
 ## Server and Security command (Linux)
 ### how to add user to linux server
